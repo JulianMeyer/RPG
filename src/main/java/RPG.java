@@ -6,7 +6,7 @@ import ui.Presenter;
 import javax.swing.*;
 import java.awt.*;
 
-public class HelloWorld {
+public class RPG {
     public static void main(String[] args) {
         PlayerCharacter playerCharacter = new PlayerCharacter(100, 100, 1, 1, new Item());
         PlayingField field = new PlayingField(500, 500);
