@@ -1,5 +1,10 @@
+import objects.Item;
+import objects.PlayerCharacter;
+
 public class HelloWorld {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        PlayerCharacter playerCharacter = new PlayerCharacter(100, 100, 1, 1, new Item());
+
+
     }
 }
