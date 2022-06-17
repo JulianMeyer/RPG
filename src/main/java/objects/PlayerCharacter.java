@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,6 +20,13 @@ public class PlayerCharacter {
     private int magicalPower = 1;
     List<Item> itemList = new ArrayList<>();
     List<Object> equipmentList = new ArrayList<>();
+    private Image image;
+    private int dx;
+    private int dy;
+    private int x = 40;
+    private int y = 60;
+    private int w;
+    private int h;
 
     public PlayerCharacter(int health, int mana, int pyhisicalPower, int magicalPower, Item... items) {
         this.health = health;
@@ -37,6 +46,13 @@ public class PlayerCharacter {
             return "Item activated";
         }
         return "Item could not be activated";
+    }
+
+
+    private void loadImage() {
+
+        ImageIcon ii = new ImageIcon("src/main/Resources/Player/playerMage.png");
+        image = ii.getImage();
     }
 
 }

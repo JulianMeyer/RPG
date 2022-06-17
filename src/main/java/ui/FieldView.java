@@ -1,5 +1,6 @@
 package ui;
 
+import objects.PlayerCharacter;
 import objects.PlayingField;
 
 import javax.swing.*;
@@ -16,9 +17,12 @@ public class FieldView extends JPanel implements ActionListener {
     private boolean upDirection = false;
     private boolean downDirection = false;
     private boolean inGame = true;
+    private PlayerCharacter player;
+    private Image playerIcon;
 
-    public FieldView(PlayingField field) {
+    public FieldView(PlayingField field, PlayerCharacter player) {
         this.field = field;
+        this.player = player;
         initField();
     }
 
@@ -28,13 +32,24 @@ public class FieldView extends JPanel implements ActionListener {
         setFocusable(true);
 
         setPreferredSize(new Dimension(field.getXFields(), field.getYFields()));
-        // loadImages();
-        // initGame();
+        playerIcon = player.getImage();
+
+        int w = playerIcon.getWidth(this);
+        int h =  playerIcon.getHeight(this);
+        setPreferredSize(new Dimension(w, h));
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+
+        g.drawImage(playerIcon, 0, 0, null);
     }
 
     private class TAdapter extends KeyAdapter {
