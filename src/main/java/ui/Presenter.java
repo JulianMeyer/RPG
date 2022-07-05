@@ -4,6 +4,7 @@ import objects.PlayerCharacter;
 import objects.PlayingField;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Presenter extends JFrame {
 
@@ -15,11 +16,11 @@ public class Presenter extends JFrame {
     }
 
     public void start(PlayingField field) {
-        add(new FieldView(field,player));
-
+        FieldView comp = new FieldView(field, player);
+        comp.setLayout(new FlowLayout());
+        add(comp);
         setResizable(false);
         pack();
-
         setTitle("RPG");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);

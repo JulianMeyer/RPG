@@ -1,5 +1,6 @@
 package ui;
 
+import Animations.AnimationRepository;
 import objects.PlayerCharacter;
 import objects.PlayingField;
 
@@ -18,10 +19,10 @@ public class FieldView extends JPanel implements ActionListener {
     private boolean inGame = true; // in game im sinne von nicht in einem menü oder so
     private Image playerIcon; //kann man auch aus dem player lesen idk maybe später mal ändern
     private Image fieldIcon;  // so wie beim player icon
+    private Image menuIcon;
 
 
     private final int STEP = 100; //schrittgröße von 100 Pixeln -> sollte den Kacheln entsprechen
-    private Image menuIcon;
 
     public FieldView(PlayingField field, PlayerCharacter player) {
         this.field = field;
@@ -59,6 +60,15 @@ public class FieldView extends JPanel implements ActionListener {
     private void drawPlayerAt(int xPosition, int yPosition) {
         player.setXPosition(xPosition);
         player.setYPosition(yPosition);
+    }
+
+    public void printAnimation(ImageIcon imageIcon) {
+        JLabel comp = new JLabel(imageIcon);
+        setLayout(new FlowLayout());
+        comp.setVisible(true);
+
+        this.add(comp);
+        validate();
     }
 
     @Override
@@ -107,6 +117,12 @@ public class FieldView extends JPanel implements ActionListener {
                 move("down");
                 repaint();
             }
+            if (key == KeyEvent.VK_T) {
+                System.out.println("test play");
+                printAnimation(AnimationRepository.TEST002);
+            }
         }
     }
+
+
 }
