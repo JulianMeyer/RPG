@@ -1,5 +1,6 @@
 package ui;
 
+import objects.MenuBar;
 import objects.PlayerCharacter;
 import objects.PlayingField;
 
@@ -13,16 +14,20 @@ import java.awt.event.KeyEvent;
 public class FieldView extends JPanel implements ActionListener {
     private final PlayingField field;
     private PlayerCharacter player;
+
+    private MenuBar menuBar;
     private boolean inGame = true; // in game im sinne von nicht in einem menü oder so
     private Image playerIcon; //kann man auch aus dem player lesen idk maybe später mal ändern
     private Image fieldIcon;  // so wie beim player icon
 
 
     private final int STEP = 100; //schrittgröße von 100 Pixeln -> sollte den Kacheln entsprechen
+    private Image menuIcon;
 
     public FieldView(PlayingField field, PlayerCharacter player) {
         this.field = field;
         this.player = player;
+        this.menuBar = new MenuBar(player);
         initField();
     }
 
@@ -30,12 +35,16 @@ public class FieldView extends JPanel implements ActionListener {
         addKeyListener(new TAdapter());
         setBackground(Color.black);
         setFocusable(true);
+        player.setXPosition(0);
+        player.setYPosition(201);
         playerIcon = player.getImage();
         fieldIcon = field.getDefaultBG();
+        menuIcon = menuBar.getImage();
 
         int w = fieldIcon.getWidth(this);
         int h = fieldIcon.getHeight(this);
-        setPreferredSize(new Dimension(w, h));
+        int h2 = menuIcon.getHeight(this);
+        setPreferredSize(new Dimension(w, h + h2));
     }
 
 
@@ -61,7 +70,8 @@ public class FieldView extends JPanel implements ActionListener {
 
     private void doDrawing(Graphics g) {
         if (inGame) {
-            g.drawImage(fieldIcon, 0, 0, null);
+            g.drawImage(menuIcon, 0, 0, null);
+            g.drawImage(fieldIcon, 0, 201, null);
             g.drawImage(playerIcon, player.getXPosition(), player.getYPosition(), null);
         }
     }
