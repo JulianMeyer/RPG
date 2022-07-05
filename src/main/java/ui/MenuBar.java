@@ -1,7 +1,8 @@
-package objects;
+package ui;
 
 import lombok.Getter;
 import lombok.Setter;
+import objects.PlayerCharacter;
 
 import javax.swing.*;
 import java.awt.*;

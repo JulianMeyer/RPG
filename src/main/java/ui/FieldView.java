@@ -1,6 +1,5 @@
 package ui;
 
-import objects.MenuBar;
 import objects.PlayerCharacter;
 import objects.PlayingField;
 
