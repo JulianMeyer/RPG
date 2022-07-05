@@ -20,6 +20,8 @@ public class FieldView extends JPanel implements ActionListener {
     private PlayerCharacter player;
     private Image playerIcon;
 
+    private Image fieldIcon;
+
     public FieldView(PlayingField field, PlayerCharacter player) {
         this.field = field;
         this.player = player;
@@ -33,9 +35,10 @@ public class FieldView extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(field.getXFields(), field.getYFields()));
         playerIcon = player.getImage();
+        fieldIcon = field.getDefaultBG();
 
-        int w = playerIcon.getWidth(this);
-        int h =  playerIcon.getHeight(this);
+        int w = fieldIcon.getWidth(this);
+        int h =  fieldIcon.getHeight(this);
         setPreferredSize(new Dimension(w, h));
     }
 
@@ -49,6 +52,7 @@ public class FieldView extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
 
+        g.drawImage(fieldIcon, 0, 0, null);
         g.drawImage(playerIcon, 0, 0, null);
     }
 

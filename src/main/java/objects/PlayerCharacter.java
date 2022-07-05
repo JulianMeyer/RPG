@@ -34,6 +34,7 @@ public class PlayerCharacter {
         this.pyhisicalPower = pyhisicalPower;
         this.magicalPower = magicalPower;
         itemList.addAll(Arrays.asList(items));
+        loadImage();
     }
 
     public String activateItem(Item item) {
@@ -50,8 +51,7 @@ public class PlayerCharacter {
 
 
     private void loadImage() {
-
-        ImageIcon ii = new ImageIcon("src/main/Resources/Player/playerMage.png");
+        ImageIcon ii = new ImageIcon("src/main/Resources/Player/PlayerMageFFI 100x100.png");
         image = ii.getImage();
     }
 
