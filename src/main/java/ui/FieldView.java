@@ -21,6 +21,8 @@ public class FieldView extends JPanel implements ActionListener {
     private Image fieldIcon;  // so wie beim player icon
     private Image menuIcon;
 
+    private JLabel animationLabel;
+
 
     private final int STEP = 100; //schrittgröße von 100 Pixeln -> sollte den Kacheln entsprechen
 
@@ -65,12 +67,25 @@ public class FieldView extends JPanel implements ActionListener {
 
     public void printAnimation(ImageIcon imageIcon, int xPosition, int yPosition) {
         this.setLayout(null);
-        JLabel label = new JLabel(imageIcon);
-        label.setBounds(xPosition, yPosition, 100, 100);
-        label.setVisible(true);
-        this.add(label);
+        if (animationLabel != null) {
+            this.remove(animationLabel);
+        }
+        imageIcon.getImage().flush();
+        animationLabel = new JLabel(imageIcon);
+        animationLabel.setBounds(xPosition, yPosition, 100, 100);
+        animationLabel.setVisible(true);
+        this.add(animationLabel);
         validate();
         repaint();
+
+//        try {
+//            Thread.sleep(2000);
+//            this.remove(label);
+//            validate();
+//            repaint();
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 
     @Override
