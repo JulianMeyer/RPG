@@ -55,6 +55,7 @@ public class FieldView extends JPanel implements ActionListener {
             case "up" -> drawPlayerAt(player.getXPosition(), player.getYPosition() - STEP);
             case "down" -> drawPlayerAt(player.getXPosition(), player.getYPosition() + STEP);
         }
+        repaint();
     }
 
     private void drawPlayerAt(int xPosition, int yPosition) {
@@ -62,13 +63,14 @@ public class FieldView extends JPanel implements ActionListener {
         player.setYPosition(yPosition);
     }
 
-    public void printAnimation(ImageIcon imageIcon) {
-        JLabel comp = new JLabel(imageIcon);
-        setLayout(new FlowLayout());
-        comp.setVisible(true);
-
-        this.add(comp);
+    public void printAnimation(ImageIcon imageIcon, int xPosition, int yPosition) {
+        this.setLayout(null);
+        JLabel label = new JLabel(imageIcon);
+        label.setBounds(xPosition, yPosition, 100, 100);
+        label.setVisible(true);
+        this.add(label);
         validate();
+        repaint();
     }
 
     @Override
@@ -101,14 +103,12 @@ public class FieldView extends JPanel implements ActionListener {
             if (key == KeyEvent.VK_LEFT) {
                 if (player.getXPosition() > 0) {
                     move("left");
-                    repaint();
                 }
             }
 
             if (key == KeyEvent.VK_RIGHT) {
                 if (player.getXPosition() < 900) {
                     move("right");
-                    repaint();
                 }
 
             }
@@ -116,19 +116,17 @@ public class FieldView extends JPanel implements ActionListener {
             if (key == KeyEvent.VK_UP) {
                 if (player.getYPosition() > 201) {
                     move("up");
-                    repaint();
                 }
             }
 
             if (key == KeyEvent.VK_DOWN) {
                 if (player.getYPosition() < 1100) {
                     move("down");
-                    repaint();
                 }
             }
             if (key == KeyEvent.VK_T) {
                 System.out.println("test play");
-                printAnimation(AnimationRepository.TEST002);
+                printAnimation(AnimationRepository.TEST001, player.getXPosition() + 100, player.getYPosition());
             }
         }
     }
