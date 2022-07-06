@@ -99,23 +99,32 @@ public class FieldView extends JPanel implements ActionListener {
             int key = e.getKeyCode();
 
             if (key == KeyEvent.VK_LEFT) {
-                move("left");
-                repaint();
+                if (player.getXPosition() > 0) {
+                    move("left");
+                    repaint();
+                }
             }
 
             if (key == KeyEvent.VK_RIGHT) {
-                move("right");
-                repaint();
+                if (player.getXPosition() < 900) {
+                    move("right");
+                    repaint();
+                }
+
             }
 
             if (key == KeyEvent.VK_UP) {
-                move("up");
-                repaint();
+                if (player.getYPosition() > 201) {
+                    move("up");
+                    repaint();
+                }
             }
 
             if (key == KeyEvent.VK_DOWN) {
-                move("down");
-                repaint();
+                if (player.getYPosition() < 1100) {
+                    move("down");
+                    repaint();
+                }
             }
             if (key == KeyEvent.VK_T) {
                 System.out.println("test play");
