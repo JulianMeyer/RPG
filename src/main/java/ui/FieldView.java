@@ -77,15 +77,6 @@ public class FieldView extends JPanel implements ActionListener {
         this.add(animationLabel);
         validate();
         repaint();
-
-//        try {
-//            Thread.sleep(2000);
-//            this.remove(label);
-//            validate();
-//            repaint();
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 
     @Override
