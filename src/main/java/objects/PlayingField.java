@@ -19,7 +19,7 @@ public class PlayingField {
     }
 
     private void loadImage() {
-        ImageIcon ii = new ImageIcon("src/main/Resources/BG/Chessboard1000x1000w100x100T.png");
+        ImageIcon ii = new ImageIcon("src/main/Resources/BG/bg001.png");
         defaultBG = ii.getImage();
     }
 }
